@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cnydinpra1tfq"]
+
+[ext_resource type="Script" uid="uid://syqbmlcrunlo" path="res://pulpo_proyectil.gd" id="1_xx8j7"]
+[ext_resource type="Texture2D" uid="uid://7182ky24jafe" path="res://sprites/proyectil.png" id="2_b5wed"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smhyf"]
+size = Vector2(112.875, 17.125)
+
+[node name="Node2D" type="Node2D" unique_id=2070016005]
+
+[node name="pulpo proyectil" type="Area2D" parent="." unique_id=1114300481]
+script = ExtResource("1_xx8j7")
+
+[node name="Sprite2D" type="Sprite2D" parent="pulpo proyectil" unique_id=1411989914]
+position = Vector2(174.5, 167.5)
+scale = Vector2(0.44472364, 0.5131579)
+texture = ExtResource("2_b5wed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pulpo proyectil" unique_id=443851443]
+position = Vector2(171.5625, 168.5625)
+shape = SubResource("RectangleShape2D_smhyf")

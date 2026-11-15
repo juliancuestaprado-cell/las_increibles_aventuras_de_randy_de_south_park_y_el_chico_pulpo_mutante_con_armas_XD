@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b5gu34eocn8fw"]
+
+[ext_resource type="Texture2D" uid="uid://dnhvf1aeqccbx" path="res://sprites/Halloween Vault_ Panda and Hat-Wearing Hero.png" id="1_0r3i0"]
+
+[sub_resource type="GDScript" id="GDScript_wtcfe"]
+resource_name = "pluma cayendo "
+script/source = "extends Sprite2D
+
+# Variables de caída (de lento a rápido)
+@export var velocidad_inicial: float = 20.0      # Empieza muy lento
+@export var aceleracion: float = 450.0           # Qué tan rápido gana velocidad al caer
+@export var velocidad_maxima: float = 1200.0     # Límite de velocidad
+
+# Rotación opcional en el aire (pon 0.0 si quieres que caiga totalmente recto)
+@export var velocidad_giro: float = 1.5          
+
+var velocidad_actual: float = 0.0
+
+func _ready() -> void:
+	velocidad_actual = velocidad_inicial
+
+func _process(delta: float) -> void:
+	# 1. Aumentar la velocidad progresivamente en cada fotograma
+	velocidad_actual = min(velocidad_actual + aceleracion * delta, velocidad_maxima)
+	
+	# 2. Mover el bolígrafo hacia abajo en línea recta
+	position.y += velocidad_actual * delta
+	
+	# 3. Rotar ligeramente mientras cae
+	rotation += velocidad_giro * delta
+
+"
+
+[node name="plumas" type="Sprite2D" unique_id=578369170]
+scale = Vector2(0.023743011, 0.095102504)
+texture = ExtResource("1_0r3i0")
+script = SubResource("GDScript_wtcfe")
